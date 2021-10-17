@@ -1,2 +1,6 @@
 # TranslateROBOT
 A Reddit bot that translates comments and posts to target language
+
+Reddit account --> u/translaterobot
+
+![](https://user-images.githubusercontent.com/85396359/137637018-d9783ca3-33de-4874-94af-1a8cf9fe87b7.png)
