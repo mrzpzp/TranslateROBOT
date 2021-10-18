@@ -46,10 +46,9 @@ def reply(p_type, to_input):
     else:
       translator = Translator()
       output = translator.translate(input, dest=lang_code_f)
-      text_output_a = output.text
-      text_output_b = text_output_a.replace("** ", "**")
-      text_output_c = text_output_b.replace(" **", "**")
-      text_output = text_output_c
+      text_output = output.text
+      text_output = text_output.replace("** ", "**")
+      text_output = text_output.replace(" **", "**")
 
 
       if lang_code_f == "tr":
