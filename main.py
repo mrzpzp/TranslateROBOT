@@ -27,16 +27,16 @@ def reply(p_type, to_input):
                         p_type.id)
                 
   lang_code =  p_type.body  
-  lang_code_a = lang_code.replace("u/translaterobot", "")
-  lang_code_f = lang_code_a.replace(" ", "")
+  lang_code = lang_code.replace("u/translaterobot", "")
+  lang_code= lang_code.replace(" ", "")
             
-  if (lang_code_f in language_code_list.codes):         
+  if (lang_code in language_code_list.codes):         
     print("Using API")
     input = to_input
 
     if len(input) >= 3000:
  
-      if lang_code_f == "tr":
+      if lang_code == "tr":
         print("More than 3000 characters.Passed.")
         p_type.reply("*3000'den fazla karakter olduğu için bunu çeviremiyorum.Özür dilerim.* "  + "\n\n" + "^(Ben bir botum ve bu eylem otomatik olarak gerçekleştirildi.)" + "\n\n" + "[INFO](https://www.reddit.com/user/translaterobot/comments/pq1pdf/helloooo_i_am_translaterobot_en/)")
       else:
@@ -45,29 +45,28 @@ def reply(p_type, to_input):
                   
     else:
       translator = Translator()
-      output = translator.translate(input, dest=lang_code_f)
+      output = translator.translate(input, dest=lang_code)
       text_output = output.text
       text_output = text_output.replace("** ", "**")
       text_output = text_output.replace(" **", "**")
 
-
-      if lang_code_f == "tr":
-        p_type.reply("*Beep boop, işte çevirin:* " + "\n\n" + text_output + " \n\n " + "^(Ben bir botum ve bu eylem otomatik olarak gerçekleştirildi.Çevirim mükemmel olmayabilir, eğer kötü olduğunu düşünüyorsan bu yorumu eksile ve yorumu sileyim.)" + "\n\n" + "[INFO](https://www.reddit.com/user/translaterobot/comments/pq1kz0/merhabaaa_ben_translaterobot_tr/)")
+      if lang_code == "tr":
+        p_type.reply("*Beep boop, işte çevirin:* " + "\n\n" + text_output + " \n\n " + output.src  + " *dilinden* "  + "tr *diline çevrildi.*" + " \n\n " + "^(Ben bir botum ve bu eylem otomatik olarak gerçekleştirildi.Çevirim mükemmel olmayabilir, eğer kötü olduğunu düşünüyorsan bu yorumu eksile ve yorumu sileyim.)" + "\n\n" + "[INFO](https://www.reddit.com/user/translaterobot/comments/pq1kz0/merhabaaa_ben_translaterobot_tr/)")
        
-      elif lang_code_f == "fr":
-        p_type.reply("*Beep boop, voici ta traduction:* " + "\n\n" + text_output + " \n\n " + "^(Je suis un bot et cette action a été effectuée automatiquement. Ma traduction n'est peut-être pas parfaite, downvote ce commentaire si cette traduction est nulle et je m'en irai.)" + "\n\n" + "[INFO](https://www.reddit.com/user/translaterobot/comments/pq1pdf/helloooo_i_am_translaterobot_en/)")
+      elif lang_code == "fr":
+        p_type.reply("*Beep boop, voici ta traduction:* " + "\n\n" + text_output + " \n\n " + output.src + " --> fr"  + " \n\n " + "^(Je suis un bot et cette action a été effectuée automatiquement. Ma traduction n'est peut-être pas parfaite, downvote ce commentaire si cette traduction est nulle et je m'en irai.)" + "\n\n" + "[INFO](https://www.reddit.com/user/translaterobot/comments/pq1pdf/helloooo_i_am_translaterobot_en/)")
 
-      elif lang_code_f == "es":
-        p_type.reply("*Beep boop, aquí está tu traducción:* " + "\n\n" + text_output + " \n\n " + "^(Soy un bot y esta acción se realizó automáticamente. Es posible que mi traducción no sea perfecta, downvote este comentario si esta traducción apesta y me iré.)" + "\n\n" + "[INFO](https://www.reddit.com/user/translaterobot/comments/pq1pdf/helloooo_i_am_translaterobot_en/)")
+      elif lang_code == "es":
+        p_type.reply("*Beep boop, aquí está tu traducción:* " + "\n\n" + text_output + " \n\n " + output.src + " --> es"  + " \n\n " + "^(Soy un bot y esta acción se realizó automáticamente. Es posible que mi traducción no sea perfecta, downvote este comentario si esta traducción apesta y me iré.)" + "\n\n" + "[INFO](https://www.reddit.com/user/translaterobot/comments/pq1pdf/helloooo_i_am_translaterobot_en/)")
 
-      elif lang_code_f == "it":
-        p_type.reply("*Beep boop, ecco la tua traduzione:* "  + "\n\n" +   text_output + " \n\n " + "^(Sono un bot e questa azione è stata eseguita automaticamente. La mia traduzione potrebbe non essere perfetta, downvote commento se questa traduzione fa schifo e me ne andrò.)" + "\n\n" + "[INFO](https://www.reddit.com/user/translaterobot/comments/pq1pdf/helloooo_i_am_translaterobot_en/)")
+      elif lang_code == "it":
+        p_type.reply("*Beep boop, ecco la tua traduzione:* "  + "\n\n" +   text_output + " \n\n " + output.src + " --> it"  + " \n\n " + "^(Sono un bot e questa azione è stata eseguita automaticamente. La mia traduzione potrebbe non essere perfetta, downvote commento se questa traduzione fa schifo e me ne andrò.)" + "\n\n" + "[INFO](https://www.reddit.com/user/translaterobot/comments/pq1pdf/helloooo_i_am_translaterobot_en/)")
 
-      elif lang_code_f == "de":
-        p_type.reply("*Beep boop, hier ist deine übersetzung:* "  + "\n\n" +  text_output + " \n\n " + "^(Ich bin ein Bot und diese Aktion wurde automatisch ausgeführt.Meine Übersetzung ist möglicherweise nicht perfekt.Downvote Sie diesen Kommentar ab, wenn diese Übersetzung scheiße ist, und ich werde weggehen.)" + "\n\n" + "[INFO](https://www.reddit.com/user/translaterobot/comments/pq1pdf/helloooo_i_am_translaterobot_en/)")
+      elif lang_code == "de":
+        p_type.reply("*Beep boop, hier ist deine übersetzung:* "  + "\n\n" +  text_output + " \n\n " + output.src + " --> de"  + " \n\n " + "^(Ich bin ein Bot und diese Aktion wurde automatisch ausgeführt.Meine Übersetzung ist möglicherweise nicht perfekt.Downvote Sie diesen Kommentar ab, wenn diese Übersetzung scheiße ist, und ich werde weggehen.)" + "\n\n" + "[INFO](https://www.reddit.com/user/translaterobot/comments/pq1pdf/helloooo_i_am_translaterobot_en/)")
 
       else:
-        p_type.reply("*Beep boop, here is your translation:* "  + "\n\n" +  text_output + " \n\n " + "^(I am a bot and this action was performed automatically.My translation may not be perfect,downvote this comment if this translation sucks and I will go away.)" + "\n\n" + "[INFO](https://www.reddit.com/user/translaterobot/comments/pq1pdf/helloooo_i_am_translaterobot_en/)")
+        p_type.reply("*Beep boop, here is your translation:* "  + "\n\n" +  text_output + " \n\n " + "*From language* " + output.src + " *to language* en " + " \n\n " + "^(I am a bot and this action was performed automatically.My translation may not be perfect,downvote this comment if this translation sucks and I will go away.)" + "\n\n" + "[INFO](https://www.reddit.com/user/translaterobot/comments/pq1pdf/helloooo_i_am_translaterobot_en/)")
                   
                   
   else:
