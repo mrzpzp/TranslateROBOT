@@ -2,7 +2,6 @@
 
 import time
 import praw
-import os
 import language_code_list
 from googletrans import Translator
 from prawcore.exceptions import Forbidden
