@@ -27,6 +27,7 @@ def reply(p_type, to_input):
                 
   lang_code =  p_type.body  
   lang_code = lang_code.replace("u/translaterobot", "")
+  lang_code = lang_code.replace("/", "")
   lang_code= lang_code.replace(" ", "")
             
   if (lang_code in language_code_list.codes):         
